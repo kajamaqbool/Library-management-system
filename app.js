@@ -1,12 +1,13 @@
-const express = require("express");
-const { connectDB } = require('./config/db'); 
+const express = require('express');
+const connectDB = require('./config/db');
 
 const app = express();
 
+// Connect Database
 connectDB();
 
-app.get('/', (req,res)=>{
-    res.send("Hello World");
-});
+app.get('/', (req, res) => res.send('Hello world!'));
 
-app.listen(9000, ()=> console.log("server running on port 9000"));
+const port = process.env.PORT || 8082;
+
+app.listen(port, () => console.log(`Server running on port ${port}`));
