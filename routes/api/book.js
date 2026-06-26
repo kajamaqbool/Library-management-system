@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.router();
+const router = express.Router();
 
 const Book = require('../../models/Book');
 
@@ -26,9 +26,7 @@ router.post('/', (req,res) => {
 router.put('/:id', (req,res) => {
     Book.findByIdAndUpdate(req.params.id, req.body)
         .then(book => res.json({msg:"Updated Succesfully"}))
-        .catch(err => 
-            res.status(400).json({error:"Unable to update database"})
-        );
+        .catch(err => res.status(400).json({error:"Unable to update database"}));
 });
 
 router.delete('/:id', (req,res)=>{
